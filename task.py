@@ -30,7 +30,18 @@ class Task():
         """Uses current pose of sim to return reward."""
         reward = 1.-.3*(abs(self.sim.pose[:3] - self.target_pos)).sum()
         return reward
-
+#     def get_reward(self):
+#         """Uses current pose of sim to return reward."""
+#         # elapse time?
+#         # distance to the target
+#         distance_to_target = np.linalg.norm(abs(self.target_pos - self.sim.pose[:3]))
+#         # velocity changes of x,y,z,        self.sim.linear_accel
+#         linear_acce = np.linalg.norm(self.sim.linear_accel)
+#         # angular velocity changes,        self.sim.angular_accels
+#         angular_acce = np.linalg.norm(self.sim.angular_accels)
+#         reward = 1.-.3* distance_to_target - 0.01 * linear_acce - 0.001 * angular_acce
+#         return reward
+    
     def step(self, rotor_speeds):
         """Uses action to obtain next state, reward, done."""
         reward = 0
